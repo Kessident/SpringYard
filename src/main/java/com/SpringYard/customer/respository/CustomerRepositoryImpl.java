@@ -36,7 +36,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public Customer getByID(int id) {
         final String GET_BY_ID_SQL = "SELECT * FROM customer WHERE id=?";
-        return database.queryForObject(GET_BY_ID_SQL, new CustomerMapper());
+        return database.queryForObject(GET_BY_ID_SQL, new CustomerMapper(), id);
     }
 
     @Override

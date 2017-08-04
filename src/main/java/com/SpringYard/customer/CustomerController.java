@@ -44,7 +44,7 @@ public class CustomerController {
     @RequestMapping("/customer/view")
     public String viewCustomer(@RequestParam int id, Model model){
         Customer customer = customerService.getByID(id);
-        model.addAttribute("customerFound", customer);
+        model.addAttribute("customer", customer);
         return "view_customer.html";
     }
 
