@@ -38,14 +38,18 @@ public class CustomerController {
     public String addCustomerPost(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String phone, @RequestParam String email){
         Customer newCustomer = new Customer(firstName, lastName, phone, email);
         customerService.add(newCustomer);
-        return "redirect:/customers";
+        return "redirect:/customer/view/all";
     }
 
     @RequestMapping("/customer/view")
     public String viewCustomer(@RequestParam int id, Model model){
         Customer customer = customerService.getByID(id);
-        model.addAttribute("customer", customer);
-        return "view_customer.html";
+        if (customer != null){
+            model.addAttribute("customer", customer);
+            return "view_customer";
+        } else {
+            return "customer_not_found";
+        }
     }
 
 }

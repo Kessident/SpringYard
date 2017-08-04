@@ -2,6 +2,7 @@ package com.SpringYard.customer.respository;
 
 import com.SpringYard.customer.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -36,7 +37,11 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public Customer getByID(int id) {
         final String GET_BY_ID_SQL = "SELECT * FROM customer WHERE id=?";
-        return database.queryForObject(GET_BY_ID_SQL, new CustomerMapper(), id);
+        try{
+            return database.queryForObject(GET_BY_ID_SQL, new CustomerMapper(), id);
+        } catch (EmptyResultDataAccessException ex) {
+            return null;
+        }
     }
 
     @Override
