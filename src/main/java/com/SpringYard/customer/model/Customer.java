@@ -1,5 +1,9 @@
 package com.SpringYard.customer.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "customer")
 public class Customer {
 
     private int id;
@@ -18,6 +22,8 @@ public class Customer {
         this.email = email;
     }
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
