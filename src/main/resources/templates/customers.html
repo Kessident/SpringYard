@@ -6,9 +6,16 @@
 </head>
 <body>
 <div class="Customer-Container">
-    <ul>
-        <li th:each="customer : ${customerList}"><a th:href="@{/customer/view(id=${customer.id})}" th:text="${customer.id}"></a></li>
-    </ul>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+        </tr>
+        <tr th:each="customer : ${customerList}">
+            <td><a th:href="@{'/customer/view/'+${customer.id}}" th:text="${customer.id}"></a></td>
+            <td><span th:text="${customer.firstName} + ${customer.lastName}"></span></td>
+        </tr>
+    </table>
     <a href="/customer/add">Add a new customer</a>
 
 </div>
