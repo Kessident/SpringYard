@@ -32,6 +32,7 @@ public class Customer {
         this.id = id;
     }
 
+    @Column(name = "firstname")
     public String getFirstName() {
         return firstName;
     }
@@ -40,6 +41,7 @@ public class Customer {
         this.firstName = firstName;
     }
 
+    @Column(name = "lastname")
     public String getLastName() {
         return lastName;
     }
